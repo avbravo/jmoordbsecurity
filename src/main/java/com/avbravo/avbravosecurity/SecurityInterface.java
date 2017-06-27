@@ -19,25 +19,34 @@ import javax.servlet.http.HttpSession;
  */
 public interface SecurityInterface {
 
-//    public String doLogin();
-//
-//    public String doLogout();
-    // public String showAllSessions();
-    // public String killAllSessions();
-    // public void verifySesionLocal();
-    // public String cancelSelectedSession(BrowserSession browserSesssion);
     // <editor-fold defaultstate="collapsed" desc="addUsername"> 
+    /**
+     * 
+     * @param username
+     * @param session
+     * @param token
+     * @param maxSegundosParaInactividad
+     * @return 
+     */
     default public Boolean addUsername(String username, HttpSession session, String token,Integer maxSegundosParaInactividad) {
         return SessionListener.addUsername(username, session, token,maxSegundosParaInactividad);
     } // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="irLogin"> 
+    /**
+     * 
+     * @return 
+     */
     default public String irLogin() {
         return "/faces/login";
     }
 // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="logout">
-
+/**
+ * name 
+ * @param path
+ * @return 
+ */
     default public String logout(String path) {
         Boolean loggedIn = false;
         try {

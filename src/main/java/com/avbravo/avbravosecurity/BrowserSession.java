@@ -13,14 +13,15 @@ import javax.servlet.http.HttpSession;
  * @author avbravo
  */
 public class BrowserSession {
+
     private String id;
-        private LocalTime time; 
-        private String ipcliente;
-        private String browser;
-        private String username;
-         private String token;
-        HttpSession session;
-        private Integer maxSgundosParaInactividad;
+    private LocalTime time;
+    private String ipcliente;
+    private String browser;
+    private String username;
+    private String token;
+    HttpSession session;
+    private Integer maxSgundosParaInactividad;
 
     public Integer getMaxSgundosParaInactividad() {
         return maxSgundosParaInactividad;
@@ -40,15 +41,9 @@ public class BrowserSession {
         this.session = session;
         this.maxSgundosParaInactividad = maxSgundosParaInactividad;
     }
-       
 
     public BrowserSession() {
     }
-
-   
-
-   
-    
 
     public String getToken() {
         return token;
@@ -58,8 +53,6 @@ public class BrowserSession {
         this.token = token;
     }
 
-  
-
     public HttpSession getSession() {
         return session;
     }
@@ -67,8 +60,6 @@ public class BrowserSession {
     public void setSession(HttpSession session) {
         this.session = session;
     }
-
-   
 
     public String getId() {
         return id;
@@ -109,6 +100,5 @@ public class BrowserSession {
     public void setUsername(String username) {
         this.username = username;
     }
-        
-        
+
 }
