@@ -137,7 +137,7 @@ public class SessionListener implements HttpSessionListener {
         BrowserSession browserSession = new BrowserSession(session.getId(), time, JsfUtilSecurity.getIp(), JsfUtilSecurity.getBrowserName(), "", "", session, numberOfSession);
         browserSessionList.add(browserSession);
 
-        JsfUtilSecurity.successMessage("Se creo una sesion " + session.getId());
+       // JsfUtilSecurity.successMessage("Se creo una sesion " + session.getId());
 
     }// </editor-fold>
 
