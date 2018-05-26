@@ -4,7 +4,7 @@
 
     <groupId>com.avbravo</groupId>
     <artifactId>avbravosecurity</artifactId>
-    <version>0.2.26</version>
+    <version>0.3</version>
     <packaging>ejb</packaging>
 
     <name>avbravosecurity</name>
@@ -16,7 +16,7 @@
 
     <dependencies>
         
-<!--        <dependency>
+      <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>8.0</version>
@@ -27,19 +27,8 @@
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>6.2</version>
-        </dependency>-->
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
         </dependency>
         
-          <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>6.1</version>
-        </dependency>
          <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
