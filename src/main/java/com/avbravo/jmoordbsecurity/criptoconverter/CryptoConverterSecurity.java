@@ -4,7 +4,7 @@
 * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.avbravo.avbravosecurity.criptoconverter;
+package com.avbravo.jmoordbsecurity.criptoconverter;
 
 import com.lowagie.text.pdf.codec.Base64;
 import java.security.InvalidKeyException;

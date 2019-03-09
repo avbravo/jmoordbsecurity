@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.avbravo.avbravosecurity;
+package com.avbravo.jmoordbsecurity;
 
 import java.time.LocalTime;
 import javax.servlet.http.HttpSession;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.avbravo.avbravosecurity;
+package com.avbravo.jmoordbsecurity;
 
-import com.avbravo.avbravosecurity.localutils.JsfUtilSecurity;
+import com.avbravo.jmoordbsecurity.localutils.JsfUtilSecurity;
 import java.util.Date;
 import java.util.List;
 import javax.faces.context.ExternalContext;
