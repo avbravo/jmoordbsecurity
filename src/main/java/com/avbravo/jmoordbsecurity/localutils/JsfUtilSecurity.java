@@ -43,7 +43,7 @@ import javax.faces.component.UISelectItem;
 import javax.faces.context.ExternalContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import org.primefaces.context.RequestContext;
+//import org.primefaces.context.RequestContext;
 // </editor-fold>
 
 /**
@@ -142,35 +142,35 @@ public class JsfUtilSecurity implements Serializable {
         return converter.getAsObject(FacesContext.getCurrentInstance(), component, theId);
     }    // </editor-fold>
 
-    public static void infoDialog(String titulo, String texto) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo,
-                texto);
-        RequestContext.getCurrentInstance().showMessageInDialog(message);
-    }    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="warningDialog"> 
-    public static void warningDialog(String titulo, String texto) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, titulo,
-                texto);
-        RequestContext.getCurrentInstance().showMessageInDialog(message);
-        LOG.warning(titulo + " " + texto);
-    }    // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="fatalDialog"> 
-
-    public static void fatalDialog(String titulo, String texto) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, titulo,
-                texto);
-        RequestContext.getCurrentInstance().showMessageInDialog(message);
-        LOG.warning(titulo + " " + texto);
-    }    // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="errorDialog"> 
-
-    public static void errorDialog(String titulo, String texto) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                titulo, texto);
-        RequestContext.getCurrentInstance().showMessageInDialog(message);
-        LOG.warning(titulo + " " + texto);
-    }    // </editor-fold>
+//    public static void infoDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//    }    // </editor-fold>
+//
+//    // <editor-fold defaultstate="collapsed" desc="warningDialog"> 
+//    public static void warningDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
+//// <editor-fold defaultstate="collapsed" desc="fatalDialog"> 
+//
+//    public static void fatalDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
+//// <editor-fold defaultstate="collapsed" desc="errorDialog"> 
+//
+//    public static void errorDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//                titulo, texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="converterDate"> 
 
     public static java.sql.Date converterDate(java.util.Date fecha) {

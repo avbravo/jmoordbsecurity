@@ -4,7 +4,7 @@
 
     <groupId>com.avbravo</groupId>
     <artifactId>jmoordbsecurity</artifactId>
-    <version>0.1</version>
+    <version>0.1.1</version>
     <packaging>ejb</packaging>
 
     <name>jmoordbsecurity</name>
@@ -23,11 +23,11 @@
             <scope>provided</scope>
         </dependency>
         
-          <dependency>
+<!--          <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>6.2</version>
-        </dependency>
+        </dependency>-->
         
          <dependency>
             <groupId>commons-codec</groupId>
