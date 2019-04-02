@@ -6,6 +6,7 @@
 package com.avbravo.jmoordbsecurity;
 
 import com.avbravo.jmoordbsecurity.localutils.JsfUtilSecurity;
+
 import java.util.Date;
 import java.util.List;
 import javax.faces.context.ExternalContext;
@@ -60,7 +61,7 @@ public interface SecurityInterface {
             ec.redirect(url);
             return path;
         } catch (Exception e) {
-            JsfUtilSecurity.errorMessage(e, "logout()");
+           JsfUtilSecurity.errorMessage(e, "logout()");
         }
         return path;
     }   // </editor-fold>
@@ -176,7 +177,7 @@ public interface SecurityInterface {
             if (httpSession != null) {
                 token = httpSession.getAttribute("token").toString();
             } else {
-                JsfUtilSecurity.warningMessage("No se pudo localizar una sesion activa para el usuario " + username);
+               JsfUtilSecurity.warningMessage("No se pudo localizar una sesion activa para el usuario " + username);
             }
         } catch (Exception e) {
             JsfUtilSecurity.errorMessage("getTokenOfUsername() " + e.getLocalizedMessage());
@@ -198,7 +199,7 @@ public interface SecurityInterface {
                 }//                
             }
         } catch (Exception e) {
-            JsfUtilSecurity.errorMessage("verifySesionLocal() " + e.getLocalizedMessage());
+          JsfUtilSecurity.errorMessage("verifySesionLocal() " + e.getLocalizedMessage());
         }
         return usernameRecover;
     }
@@ -256,11 +257,11 @@ public interface SecurityInterface {
         // Integer restante = 0;
         Date expiry = new Date();
         try {
-            //   Integer limite = JsfUtilSecurity.milisegundosToSegundos(session.getCreationTime()) + session.getMaxInactiveInterval();
+            //   Integer limite = JsfUtilSecuritymilisegundosToSegundos(session.getCreationTime()) + session.getMaxInactiveInterval();
 
             expiry = new Date(session.getCreationTime() + session.getMaxInactiveInterval() * 1000);
 
-            // restante = inactivatePeriodo - JsfUtilSecurity.milisegundosToSegundos(milisegundos);
+            // restante = inactivatePeriodo - JsfUtilSecuritymilisegundosToSegundos(milisegundos);
         } catch (Exception e) {
             JsfUtilSecurity.errorMessage("getDateTiemExpiration() " + e.getLocalizedMessage());
         }
@@ -310,4 +311,62 @@ public interface SecurityInterface {
         return segundos;
     }
 // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="isValidSession()">
+    /**
+     * Verifica si el usuario no esta en la session
+     * @param username
+     * @return 
+     */
+    default public Boolean isValidSession(String username) {
+        try {
+               String usernameRecover = "";
+                 Boolean recoverSession = false;
+            //Valida la sesion del usuario
+            usernameRecover = usernameRecoveryOfSession();
+            recoverSession = !usernameRecover.equals("");
+            if (recoverSession) {
+                invalidateCurrentSession();
+                JsfUtilSecurity.warningMessage("Se procedera a cerrar la sesion");
+                return false;
+            }
+
+            if (recoverSession && usernameRecover.equals(username)) {
+            } else {
+                if (isUserLogged(username)) {
+                
+                    JsfUtilSecurity.warningMessage("El usuario ya esta logeado");
+                    if (destroyByUsername(username)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+
+            }
+            return true;
+        } catch (Exception e) {
+            JsfUtilSecurity.errorMessage("isValidSession() "+e.getLocalizedMessage());
+        }
+        return false;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="invalidateCurrentSession"> 
+
+   default public String invalidateCurrentSession() {
+        try {
+            if (invalidateMySession()) {
+                JsfUtilSecurity.successMessage("The session was invalidated");
+            } else {
+                JsfUtilSecurity.warningMessage("The session could not be invalidated");
+            }
+
+        } catch (Exception e) {
+            JsfUtilSecurity.successMessage("invalidateCurrentSession() " + e.getLocalizedMessage());
+        }
+        return "";
+    }// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="doLogout">
 }

@@ -913,4 +913,134 @@ public class JsfUtilSecurity implements Serializable {
         }
         return "Unknown";
     }// </editor-fold>
+    
+ 
+  
+  
+    
+    
+     public static  Date getFechaHoraActual() {
+        LocalDateTime ahora = LocalDateTime.now();
+        Date date2 = Date.from(ahora.atZone(ZoneId.systemDefault()).toInstant());
+        return date2;
+    }
+     
+     // <editor-fold defaultstate="collapsed" desc="nombreEntity(String texto)">
+   
+   /**
+    * obtiene el texto despues del ultimo puento
+    * @param texto (com.avbravo.entity.Rol)
+    * @return Rol
+    */
+   public static String nombreEntity(String texto){
+       String result="";
+          // TODO code application logic here
+          try {
+       
+        Integer pos =texto.lastIndexOf(".");
+
+       result = texto.substring(pos+1, texto.length());
+
+       } catch (Exception e) {
+       }
+        return result;
+        
+   }
+    // </editor-fold>
+   
+   
+   
+
+    
+    
+//     // <editor-fold defaultstate="collapsed" desc="infoDialog"> 
+//    public static void infoDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//    }
+//    // </editor-fold>
+//
+//    // <editor-fold defaultstate="collapsed" desc="warningDialog"> 
+//    public static void warningDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
+//// <editor-fold defaultstate="collapsed" desc="fatalDialog"> 
+//
+//    public static void fatalDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, titulo,
+//                texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
+//// <editor-fold defaultstate="collapsed" desc="errorDialog"> 
+//
+//    public static void errorDialog(String titulo, String texto) {
+//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//                titulo, texto);
+//        RequestContext.getCurrentInstance().showMessageInDialog(message);
+//        LOG.warning(titulo + " " + texto);
+//    }    // </editor-fold>
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="isVacio(String texto)()"> 
+    /**
+     * return true si es null empty equals("")
+     *
+     * @param texto
+     * @return
+     */
+    public static Boolean isVacio(String texto) {
+        texto = texto.trim();
+        return texto == null || texto.equals("") || texto.isEmpty();
+    }// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="isVacio(Integer texto)"> 
+
+    /**
+     * return true si es null empty equals("")
+     *
+     * @param texto
+     * @return
+     */
+    public static Boolean isVacio(Integer texto) {
+        return texto == null || texto.equals("");
+    }// </editor-fold>
+   
+    // <editor-fold defaultstate="collapsed" desc="isVacio(Integer texto)"> 
+    /**
+     * return true si es null empty equals("")
+     *
+     * @param texto
+     * @return
+     */
+    public static Boolean isVacio(Double texto) {
+        return texto == null || texto.equals("");
+    }// </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Boolean isNegativo(Double texto)"> 
+    /**
+     * return true si es null empty equals("")
+     *
+     * @param texto
+     * @return
+     */
+    public static Boolean isNegativo(Double numero) {
+        return numero == null || numero.equals("") || numero <0;
+    }// </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Boolean isNegativo(Double texto)"> 
+    /**
+     * return true si es null empty equals("")
+     *
+     * @param texto
+     * @return
+     */
+    public static Boolean isNegativo(Integer numero) {
+        return numero == null || numero.equals("") || numero <0;
+    }// </editor-fold>
+    
+    
 }
