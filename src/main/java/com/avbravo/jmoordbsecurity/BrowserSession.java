@@ -5,8 +5,8 @@
  */
 package com.avbravo.jmoordbsecurity;
 
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalTime;
-import javax.servlet.http.HttpSession;
 
 /**
  *

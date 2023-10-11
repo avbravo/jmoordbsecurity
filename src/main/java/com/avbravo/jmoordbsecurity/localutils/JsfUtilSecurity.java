@@ -7,7 +7,18 @@ package com.avbravo.jmoordbsecurity.localutils;
 // <editor-fold defaultstate="collapsed" desc="import">  
 
 
-import com.avbravo.jmoordbsecurity.criptoconverter.CryptoConverterSecurity;
+import com.jmoordbcoreencripter.jmoordbencripter.Encryptor;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.component.UISelectItem;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.model.SelectItem;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -16,12 +27,6 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.model.SelectItem;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.text.DateFormat;
@@ -38,11 +43,6 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-import javax.faces.component.UIInput;
-import javax.faces.component.UISelectItem;
-import javax.faces.context.ExternalContext;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 //import org.primefaces.context.RequestContext;
 // </editor-fold>
 
@@ -827,12 +827,12 @@ public class JsfUtilSecurity implements Serializable {
      * @param key : mykey
      * @return
      */
-    public static String encriptar(String texto) {
+    public static String encriptar(String texto,String secretKey) {
         
         try {
-            CryptoConverterSecurity cryptoConverterSecurity = new CryptoConverterSecurity();
+       
             
-            return cryptoConverterSecurity.convertToDatabaseColumn(texto);
+            return   Encryptor.encrypt(texto, secretKey);
         } catch (Exception e) {
             errorMessage("encriptar() " + e.getLocalizedMessage());
         }
@@ -848,11 +848,11 @@ public class JsfUtilSecurity implements Serializable {
      * @param key : mykey
      * @return
      */
-    public static String desencriptar(String textoencriptado) {
+    public static String desencriptar(String textoencriptado, String secretKey) {
         try {
-            CryptoConverterSecurity cryptoConverterSecurity = new CryptoConverterSecurity();
             
-            return cryptoConverterSecurity.convertToEntityAttribute(textoencriptado);
+            
+            return      Encryptor.decrypt(textoencriptado, secretKey);
         } catch (Exception e) {
             errorMessage("desencriptar() " + e.getLocalizedMessage());
         }
